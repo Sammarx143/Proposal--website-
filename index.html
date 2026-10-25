@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Surprise For You 💗</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #fff0f5, #ffc1d8);
+      color: #a83267;
+      overflow-x: hidden;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255,255,255,0.94);
+      padding: 28px 22px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 12px 40px #d64b8430;
+      position: relative;
+      z-index: 1;
+    }
+
+    .heart {
+      font-size: 58px;
+      animation: beat 1.3s infinite;
+    }
+
+    h1 {
+      font-size: 27px;
+      line-height: 1.4;
+    }
+
+    p {
+      color: #805267;
+      line-height: 1.7;
+    }
+
+    #question {
+      font-size: 21px;
+      line-height: 1.5;
+      margin: 24px 0;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    button {
+      border: none;
+      border-radius: 25px;
+      padding: 14px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform .2s;
+      font-weight: bold;
+      font-family: inherit;
+    }
+
+    button:active {
+      transform: scale(.96);
+    }
+
+    .option {
+      background: #ffe5ef;
+      color: #a83267;
+      border: 1px solid #ffc2d8;
+    }
+
+    .option:hover {
+      background: #ffd1e3;
+    }
+
+    .progress {
+      height: 6px;
+      background: #ffe5ef;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+    #bar {
+      width: 0%;
+      height: 100%;
+      background: #e94f91;
+      transition: width .3s;
+    }
+
+    .small {
+      font-size: 12px;
+      color: #aa8495;
+      margin-top: 12px;
+    }
+
+    .floating {
+      position: fixed;
+      bottom: -35px;
+      pointer-events: none;
+      animation: rise 8s linear infinite;
+      opacity: .7;
+    }
+
+    @keyframes beat {
+      50% { transform: scale(1.15); }
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .card { padding: 22px 16px; }
+      h1 { font-size: 24px; }
+      #question { font-size: 19px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="heart" id="heart">💗</div>
+
+    <h1 id="heading">Hey You! 🌸</h1>
+
+    <p id="intro">
+      I made a tiny little thing for you.<br>
+      Bas kuch cute se questions hain! 👀
+    </p>
+
+    <h2 id="question">Will you play a little game with me? 😊</h2>
+
+    <div class="options" id="options">
+      <button class="option" onclick="startGame()">
+        Haan, let's go! 💕
+      </button>
+      <button class="option" onclick="startGame()">
+        Achha, dikhao 👀
+      </button>
+    </div>
+
+    <div class="progress">
+      <div id="bar"></div>
+    </div>
+
+    <div class="small" id="step">A tiny surprise awaits ✨</div>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        heading: "Let's start! 🌷",
+        intro: "Pehla sawaal, bilkul easy!",
+        question: "How's your mood today? 😊",
+        options: ["Happy 😄", "Thoda tired 🥹", "It's a secret 🤭"]
+      },
+      {
+        heading: "One more! 💕",
+        intro: "Achha ji, next question...",
+        question: "Do you like cute surprises? 🎁",
+        options: ["Yesss! 💗", "Depends on the surprise 👀", "Of course! 🥰"]
+      },
+      {
+        heading: "Getting curious? 👀",
+        intro: "Bas aise hi pooch raha hoon... 🤭",
+        question: "Do you enjoy talking to someone who makes you smile? 😊",
+        options: ["Yesss 💖", "Maybe 🤭", "Depends on the person 🌸"]
+      },
+      {
+        heading: "Ek secret sawaal 🙈",
+        intro: "Ab honestly answer karna!",
+        question: "What if someone secretly has a little crush on you? 💌",
+        options: ["That's cute 🥹", "Who is it? 👀", "I'd want to know them 💗"]
+      },
+      {
+        heading: "Almost there! 💓",
+        intro: "Okay... last question before my little secret.",
+        question: "Would you give someone a chance to know you better? 🌷",
+        options: ["Maybe, let's see 💕", "If I feel comfortable 😊", "I'd like that 🥰"]
+      }
+    ];
+
+    let current = -1;
+
+    function renderOptions(items, callback) {
+      const container = document.getElementById("options");
+      container.innerHTML = "";
+
+      items.forEach(function(item) {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.textContent = item.text || item;
+
+        button.addEventListener("click", function() {
+          callback(item);
+        });
+
+        container.appendChild(button);
+      });
+    }
+
+    function startGame() {
+      current = 0;
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const q = questions[current];
+
+      document.getElementById("heading").textContent = q.heading;
+      document.getElementById("intro").textContent = q.intro;
+      document.getElementById("question").textContent = q.question;
+      document.getElementById("heart").textContent = "💗";
+      document.getElementById("bar").style.width =
+        ((current + 1) / (questions.length + 1) * 100) + "%";
+      document.getElementById("step").textContent =
+        "Question " + (current + 1) + " of " + questions.length;
+
+      renderOptions(q.options, function() {
+        current++;
+
+        if (current < questions.length) {
+          showQuestion();
+        } else {
+          showConfession();
+        }
+      });
+    }
+
+    function showConfession() {
+      document.getElementById("heading").textContent =
+        "Okay, one little secret... 🥹";
+      document.getElementById("intro").textContent =
+        "Ab jo kehna hai, dil se kehna hai. ❤️";
+      document.getElementById("heart").textContent = "💌";
+      document.getElementById("bar").style.width = "100%";
+      document.getElementById("step").textContent = "My little confession 💗";
+
+      document.getElementById("question").textContent =
+        "Actually... mujhe tum pasand ho. 🥹❤️ " +
+        "Tumse baat karna aur tumhe jaan-na achha lagta hai. " +
+        "Would you like to get to know me better? 🌷";
+
+      renderOptions([
+        {text: "I'd like that 💗", yes: true},
+        {text: "Mujhe sochne do 🌸", yes: false}
+      ], function(answer) {
+        if (answer.yes) {
+          showEnding(
+            "You just made me smile so much! 🥹💖 " +
+            "Let's take it one step at a time. 🌷"
+          );
+        } else {
+          showEnding(
+            "That's completely okay. 💗 " +
+            "Thank you for hearing me out. " +
+            "Take your time, no pressure at all. 🌸"
+          );
+        }
+      });
+    }
+
+    function showEnding(message) {
+      document.getElementById("heading").textContent = "Thank You! 💕";
+      document.getElementById("intro").textContent = "";
+      document.getElementById("heart").textContent = "💖";
+      document.getElementById("question").textContent = message;
+      document.getElementById("options").innerHTML = "";
+      document.getElementById("step").textContent = "Made with a little courage ❤️";
+      document.getElementById("bar").style.width = "100%";
+    }
+
+    const emojis = ["💗", "💕", "🌸", "✨", "💖"];
+
+    for (let i = 0; i < 14; i++) {
+      const el = document.createElement("div");
+      el.className = "floating";
+      el.textContent = emojis[i % emojis.length];
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.animationDelay = Math.random() * 8 + "s";
+      el.style.animationDuration = (6 + Math.random() * 5) + "s";
+      el.style.fontSize = (18 + Math.random() * 15) + "px";
+      document.body.appendChild(el);
+    }
+  </script>
+</body>
+</html>
