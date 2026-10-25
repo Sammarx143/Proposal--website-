@@ -1,125 +1,271 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Surprise 💗</title>
+<meta name="theme-color" content="#0b080c">
+<title>For Someone Special ♡</title>
+
 <style>
+:root{
+  --bg:#0b080c;
+  --panel:#171116;
+  --gold:#d9ad7c;
+  --rose:#f2c5d5;
+  --cream:#fff3ec;
+  --muted:#c8b6bd;
+}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
- margin:0;min-height:100vh;padding:20px;
- display:flex;align-items:center;justify-content:center;
- font-family:Arial,sans-serif;color:white;text-align:center;
- background:linear-gradient(135deg,#190d2e,#54265f,#a33d77);
- overflow-x:hidden
+  margin:0;min-height:100vh;padding:24px 15px;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(ellipse at 10% 10%,#633d392e,transparent 45%),
+    radial-gradient(ellipse at 90% 90%,#77344a30,transparent 42%),
+    var(--bg);
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--cream);text-align:center;overflow-x:hidden;
+}
+#particles{
+  position:fixed;inset:0;overflow:hidden;
+  pointer-events:none;z-index:0;
+}
+.particle{
+  position:absolute;bottom:-30px;color:var(--gold);
+  animation:floatUp linear forwards;opacity:0;
+  text-shadow:0 0 15px #d9ad7c55;
+}
+@keyframes floatUp{
+  10%{opacity:.65}
+  100%{transform:translateY(-110vh) rotate(40deg);opacity:0}
+}
+.shell{width:100%;max-width:470px;position:relative;z-index:1}
+.brand{
+  margin-bottom:20px;color:var(--gold);
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
 }
 .card{
- width:100%;max-width:460px;padding:30px 22px;
- border:1px solid #ffffff45;border-radius:28px;
- background:#ffffff13;backdrop-filter:blur(10px);
- box-shadow:0 15px 45px #0005
+  position:relative;overflow:hidden;
+  padding:clamp(28px,7vw,40px) 23px;
+  border:1px solid #d9ad7c44;border-radius:8px;
+  background:linear-gradient(145deg,#21171ced,#110d11f7);
+  box-shadow:0 25px 75px #0009,0 0 35px #d9ad7c0b;
 }
-.page{display:none;animation:fade .45s ease}
-.page.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-h1{font-size:clamp(30px,8vw,42px);color:#ffc4e2}
-h2{font-size:27px;color:#ffd8ed}
-p{font-size:17px;line-height:1.7}
-.heart{font-size:68px;animation:pulse 1.6s infinite}
-@keyframes pulse{50%{transform:scale(1.12)}}
+.card:before{
+  content:"";position:absolute;top:0;left:13%;right:13%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.page{display:none}
+.page.active{display:block;animation:appear .5s ease both}
+@keyframes appear{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.eyebrow{
+  margin:8px 0 22px;color:var(--gold);
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+}
+.emblem{
+  width:94px;height:94px;margin:4px auto 24px;
+  display:grid;place-items:center;border-radius:50%;
+  border:1px solid #d9ad7c66;
+  background:radial-gradient(circle,#d9ad7c19,transparent 75%);
+  font-size:40px;color:var(--rose);
+  box-shadow:0 0 35px #d9ad7c12;
+  animation:glow 3s ease-in-out infinite;
+}
+@keyframes glow{
+  50%{transform:scale(1.035);box-shadow:0 0 40px #d9ad7c30}
+}
+h1{
+  margin:0 0 17px;color:var(--rose);
+  font-family:Georgia,serif;font-size:clamp(33px,8vw,45px);
+  font-weight:normal;line-height:1.2;
+}
+h2{
+  margin:0 0 17px;color:var(--cream);
+  font-family:Georgia,serif;font-size:clamp(24px,6vw,31px);
+  font-weight:normal;line-height:1.35;
+}
+p{margin:13px 0;color:#e9dce0;font-size:15px;line-height:1.9}
+.sub{font-size:12px;color:var(--muted)}
+.ornament{margin:18px 0;color:var(--gold);letter-spacing:7px}
+.divider{
+  height:1px;margin:24px 0;
+  background:linear-gradient(90deg,transparent,#d9ad7c66,transparent);
+}
 button{
- width:100%;padding:15px;margin-top:12px;border:0;
- border-radius:14px;font-size:16px;font-weight:bold;
- cursor:pointer;background:linear-gradient(90deg,#ffadd5,#e3bdff);
- color:#351437
+  display:block;width:100%;min-height:49px;margin-top:13px;
+  padding:14px 16px;border-radius:4px;
+  font-size:12px;font-weight:700;letter-spacing:1px;
+  cursor:pointer;transition:transform .2s,filter .2s,background .2s;
+  -webkit-tap-highlight-color:transparent;
 }
-.secondary{background:#ffffff20;color:white;border:1px solid #ffffff50}
-.note{font-size:13px;color:#f3d9ee}
-#hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
-.float{position:absolute;bottom:-30px;animation:rise 7s linear forwards}
-@keyframes rise{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+button:active{transform:scale(.98)}
+button:hover{filter:brightness(1.1)}
+.primary{
+  border:1px solid var(--gold);
+  color:#1b1113;
+  background:linear-gradient(110deg,#c99b75,#f0d2b4);
+}
+.secondary{
+  border:1px solid #d9ad7c66;
+  color:var(--rose);background:transparent;
+}
+.secondary:hover{background:#d9ad7c12}
+.note{
+  margin-top:24px;color:#b7a0a8;
+  font-size:9px;letter-spacing:2px;line-height:1.8;
+}
+.footer{
+  margin-top:20px;color:#947d85;
+  font-size:9px;letter-spacing:3px;
+}
+.final-love{
+  margin:30px 0 12px;padding-top:25px;
+  border-top:1px solid #d9ad7c55;
+  color:var(--rose);font-family:Georgia,serif;
+  font-size:clamp(30px,8vw,40px);
+  letter-spacing:3px;text-shadow:0 0 25px #e9a8c755;
+  animation:loveGlow 2.5s ease-in-out infinite;
+}
+@keyframes loveGlow{
+  50%{text-shadow:0 0 35px #e9a8c799}
+}
+.final-small{font-size:10px;letter-spacing:3px;color:var(--gold)}
+@media(max-width:360px){
+  .card{padding:25px 17px}
+  p{font-size:14px}
+  .emblem{width:82px;height:82px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
 </style>
 </head>
+
 <body>
-<div id="hearts"></div>
-<main class="card">
+<div id="particles" aria-hidden="true"></div>
 
- <div class="page active" id="p1">
-  <div class="heart">💗</div>
-  <p>♡ A LITTLE SURPRISE ♡</p>
-  <h1>Hey, You! ✨</h1>
-  <p>I made something special for you.<br>Will you open it? 💌</p>
-  <button onclick="go(2)">Open Your Surprise 💖</button>
- </div>
+<main class="shell">
+  <div class="brand">♡ A little something for you ♡</div>
 
- <div class="page" id="p2">
-  <p>QUESTION 1 💌</p>
-  <h2>Can I tell you something special?</h2>
-  <p>There is something I have wanted to tell you.</p>
-  <button onclick="go(3)">Of course! 💗</button>
-  <button class="secondary" onclick="go(1)">Go Back</button>
- </div>
+  <section class="card">
 
- <div class="page" id="p3">
-  <p>QUESTION 2 💞</p>
-  <h2>You have become someone special to me.</h2>
-  <p>Would you like to hear what is in my heart?</p>
-  <button onclick="go(4)">Yes, tell me! 💖</button>
-  <button class="secondary" onclick="go(5)">I need time 🌷</button>
- </div>
+    <div class="page active" id="p1">
+      <div class="emblem">♡</div>
+      <div class="eyebrow">A private little surprise</div>
+      <h1>For Someone<br>Special</h1>
+      <div class="ornament">— ✦ —</div>
+      <p>There is something I've been wanting to tell you.</p>
+      <p class="sub">A little courage. A sincere heart. A message just for you.</p>
+      <button class="primary" onclick="go(2)">OPEN YOUR LETTER ♡</button>
+      <div class="note">MADE WITH SINCERITY</div>
+    </div>
 
- <div class="page" id="p4">
-  <div class="heart">💌</div>
-  <h2>My Feelings For You</h2>
-  <p>There is something I have wanted to say from my heart.</p>
-  <button onclick="go(6)">Read My Heart ❤️</button>
-  <button class="secondary" onclick="go(1)">Start Again</button>
- </div>
+    <div class="page" id="p2">
+      <div class="eyebrow">A little question · 01</div>
+      <div class="emblem">✉</div>
+      <h2>Can I tell you something from my heart?</h2>
+      <p>I have kept these words to myself for a while.</p>
+      <button class="primary" onclick="go(3)">YES, I'M LISTENING</button>
+      <button class="secondary" onclick="go(1)">GO BACK</button>
+    </div>
 
- <div class="page" id="p5">
-  <div class="heart">🌷</div>
-  <h2>That's Completely Okay</h2>
-  <p>Take your time. I respect your feelings, and you never have to answer before you're ready.</p>
-  <button onclick="go(6)">Read My Heart 💌</button>
-  <button class="secondary" onclick="go(1)">Start Again</button>
- </div>
+    <div class="page" id="p3">
+      <div class="eyebrow">A little question · 02</div>
+      <div class="emblem">♡</div>
+      <h2>You have become someone special to me.</h2>
+      <p>Would you like to hear what I have been wanting to say?</p>
+      <button class="primary" onclick="go(4)">TELL ME YOUR HEART ♡</button>
+      <button class="secondary" onclick="go(5)">I NEED SOME TIME 🌷</button>
+      <div class="note">YOUR COMFORT ALWAYS MATTERS</div>
+    </div>
 
- <div class="page" id="p6">
-  <div class="heart">💗</div>
-  <p>♡ JUST FOR YOU ♡</p>
-  <h1>I Love You ❤️</h1>
-  <p>Sach kahun toh, main tumhare peeche pagal sa hoon. 🥹💗</p>
-  <p>Tum meri crush ho aur main tumse bahut pyaar karta hoon.</p>
-  <p>Agar tumhari feelings mere jaisi nahi hain, toh koi baat nahi. 🫶</p>
-  <p>Agar tum mujhe us nazar se nahi dekhti, toh kya hum friends ban sakte hain?</p>
-  <p>Main tumhare decision ki respect karunga. Tumhari friendship bhi mere liye important hogi. 🌷</p>
-  <p>Bas dil ki baat tum tak pahunchani thi. 💌</p>
-  <button onclick="go(1)">Read Again ♡</button>
- </div>
+    <div class="page" id="p4">
+      <div class="emblem">💌</div>
+      <div class="eyebrow">A message from my heart</div>
+      <h2>Before you read...</h2>
+      <p>This is honest, and I mean every word. You are free to feel whatever you feel.</p>
+      <div class="divider"></div>
+      <p class="sub">Ready for my little confession?</p>
+      <button class="primary" onclick="go(6)">READ MY CONFESSION ♥</button>
+      <button class="secondary" onclick="go(1)">START AGAIN</button>
+    </div>
 
- <p class="note">Made with love and kindness ♡</p>
+    <div class="page" id="p5">
+      <div class="emblem">🌷</div>
+      <div class="eyebrow">Take your time</div>
+      <h2>That's completely okay.</h2>
+      <p>You don't have to rush your answer. Your feelings matter, and I will respect your choice.</p>
+      <button class="primary" onclick="go(6)">READ MY MESSAGE 💌</button>
+      <button class="secondary" onclick="go(1)">START AGAIN</button>
+    </div>
+
+    <div class="page" id="p6">
+      <div class="emblem">♥</div>
+      <div class="eyebrow">My honest confession</div>
+      <h1>I Love You ❤️</h1>
+      <div class="ornament">— ♡ —</div>
+
+      <p>Sach kahun toh, <strong>main tumhare peeche pagal sa hoon.</strong> 🥹❤️</p>
+
+      <p><strong>Tum meri crush ho,</strong> aur main tumse bahut pyaar karta hoon. 💗</p>
+
+      <p>Tumhe shayad andaaza bhi nahi ki tum mere liye kitni special ho.</p>
+
+      <div class="divider"></div>
+
+      <p>Agar tumhari feelings mere jaisi nahi hain, toh koi baat nahi. 🫶</p>
+
+      <p>Agar tum mujhe us nazar se nahi dekhti, toh <strong>kya hum friends ban sakte hain?</strong> 🌷</p>
+
+      <p>Main tumhare decision ki respect karunga. Tumhari friendship bhi mere liye important hogi.</p>
+
+      <div class="divider"></div>
+
+      <p>Bas dil ki baat tum tak pahunchani thi. 💌</p>
+
+      <button class="primary" onclick="go(1)">READ AGAIN ♡</button>
+
+      <div class="final-love">I LOVE YOU ❤️</div>
+      <div class="final-small">FOREVER FROM MY HEART ♡</div>
+      <div class="note">NO PRESSURE · JUST HONEST FEELINGS</div>
+    </div>
+
+  </section>
+
+  <div class="footer">A SMALL MESSAGE · A SINCERE HEART</div>
 </main>
 
 <script>
 function go(n){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById('p'+n).classList.add('active');
- window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelectorAll('.page').forEach(function(page){
+    page.classList.remove('active');
+  });
+  const target=document.getElementById('p'+n);
+  if(target) target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-const holder=document.getElementById('hearts');
-const symbols=['♡','♥','💗','✦'];
-function addHeart(){
- const h=document.createElement('span');
- h.className='float';
- h.textContent=symbols[Math.floor(Math.random()*symbols.length)];
- h.style.left=Math.random()*100+'%';
- h.style.fontSize=(14+Math.random()*20)+'px';
- h.style.animationDuration=(5+Math.random()*5)+'s';
- holder.appendChild(h);
- h.addEventListener('animationend',()=>h.remove());
+
+const holder=document.getElementById('particles');
+const symbols=['♡','✦','♥','✧'];
+
+function addParticle(){
+  if(holder.childElementCount>18)return;
+  const el=document.createElement('span');
+  el.className='particle';
+  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=Math.random()*100+'%';
+  el.style.fontSize=(11+Math.random()*15)+'px';
+  el.style.animationDuration=(7+Math.random()*7)+'s';
+  holder.appendChild(el);
+  el.addEventListener('animationend',function(){el.remove();},{once:true});
 }
-setInterval(addHeart,650);
+for(let i=0;i<7;i++)setTimeout(addParticle,i*450);
+setInterval(addParticle,1000);
 </script>
 </body>
-                                        </html>
-                    
+</html>
