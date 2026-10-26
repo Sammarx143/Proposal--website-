@@ -4,268 +4,715 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b080c">
-<title>For Someone Special ♡</title>
+<meta name="theme-color" content="#10090e">
+<title>A Little Secret ♡</title>
 
 <style>
-:root{
-  --bg:#0b080c;
-  --panel:#171116;
-  --gold:#d9ad7c;
-  --rose:#f2c5d5;
-  --cream:#fff3ec;
-  --muted:#c8b6bd;
+:root {
+  --pink: #f3bfd2;
+  --baby: #ffe7ef;
+  --rose: #c4778b;
+  --gold: #d8b18b;
+  --muted: #d1bdc6;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;min-height:100vh;padding:24px 15px;
-  display:flex;align-items:center;justify-content:center;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--baby);
+  font-family: Georgia, "Times New Roman", serif;
   background:
-    radial-gradient(ellipse at 10% 10%,#633d392e,transparent 45%),
-    radial-gradient(ellipse at 90% 90%,#77344a30,transparent 42%),
-    var(--bg);
-  font-family:"Segoe UI",Arial,sans-serif;
-  color:var(--cream);text-align:center;overflow-x:hidden;
+    radial-gradient(ellipse at 82% 12%, rgba(232,123,151,.48), transparent 42%),
+    radial-gradient(ellipse at 12% 85%, rgba(129,52,75,.42), transparent 43%),
+    linear-gradient(125deg, #070709 0%, #160d13 36%, #3b202b 70%, #85505c 100%);
+  background-attachment: fixed;
 }
-#particles{
-  position:fixed;inset:0;overflow:hidden;
-  pointer-events:none;z-index:0;
+
+button {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
-.particle{
-  position:absolute;bottom:-30px;color:var(--gold);
-  animation:floatUp linear forwards;opacity:0;
-  text-shadow:0 0 15px #d9ad7c55;
+
+#floating-hearts,
+#sparkles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
 }
-@keyframes floatUp{
-  10%{opacity:.65}
-  100%{transform:translateY(-110vh) rotate(40deg);opacity:0}
+
+.float-heart {
+  position: absolute;
+  bottom: -40px;
+  color: #ffc0d2;
+  text-shadow: 0 0 15px #ff789d;
+  animation: rise linear forwards;
 }
-.shell{width:100%;max-width:470px;position:relative;z-index:1}
-.brand{
-  margin-bottom:20px;color:var(--gold);
-  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+
+@keyframes rise {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  15% { opacity: .8; }
+  100% { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
 }
-.card{
-  position:relative;overflow:hidden;
-  padding:clamp(28px,7vw,40px) 23px;
-  border:1px solid #d9ad7c44;border-radius:8px;
-  background:linear-gradient(145deg,#21171ced,#110d11f7);
-  box-shadow:0 25px 75px #0009,0 0 35px #d9ad7c0b;
+
+.sparkle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff0f5;
+  box-shadow: 0 0 12px #ffabc5;
+  animation: twinkle 2.5s ease-in-out infinite alternate;
 }
-.card:before{
-  content:"";position:absolute;top:0;left:13%;right:13%;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.6); }
+  to { opacity: 1; transform: scale(1.5); }
 }
-.page{display:none}
-.page.active{display:block;animation:appear .5s ease both}
-@keyframes appear{
-  from{opacity:0;transform:translateY(14px)}
-  to{opacity:1;transform:translateY(0)}
+
+main {
+  width: min(100% - 28px, 510px);
+  margin: auto;
+  padding: 24px 0 45px;
+  position: relative;
+  z-index: 1;
 }
-.eyebrow{
-  margin:8px 0 22px;color:var(--gold);
-  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+
+.brand {
+  text-align: center;
+  color: var(--gold);
+  font: 9px Arial, sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 8px 0 22px;
 }
-.emblem{
-  width:94px;height:94px;margin:4px auto 24px;
-  display:grid;place-items:center;border-radius:50%;
-  border:1px solid #d9ad7c66;
-  background:radial-gradient(circle,#d9ad7c19,transparent 75%);
-  font-size:40px;color:var(--rose);
-  box-shadow:0 0 35px #d9ad7c12;
-  animation:glow 3s ease-in-out infinite;
+
+.page {
+  display: none;
+  min-height: 500px;
+  padding: 34px 25px;
+  border: 1px solid rgba(255,190,209,.48);
+  border-radius: 21px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 85% 5%, rgba(186,99,125,.17), transparent 50%),
+    linear-gradient(145deg, rgba(8,7,10,.96), rgba(27,14,22,.94));
+  box-shadow: 0 18px 60px rgba(0,0,0,.38), 0 0 25px rgba(220,120,151,.08);
+  animation: appear .55s ease both;
 }
-@keyframes glow{
-  50%{transform:scale(1.035);box-shadow:0 0 40px #d9ad7c30}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-h1{
-  margin:0 0 17px;color:var(--rose);
-  font-family:Georgia,serif;font-size:clamp(33px,8vw,45px);
-  font-weight:normal;line-height:1.2;
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-h2{
-  margin:0 0 17px;color:var(--cream);
-  font-family:Georgia,serif;font-size:clamp(24px,6vw,31px);
-  font-weight:normal;line-height:1.35;
+
+.eyebrow {
+  color: var(--gold);
+  font: 9px Arial, sans-serif;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
-p{margin:13px 0;color:#e9dce0;font-size:15px;line-height:1.9}
-.sub{font-size:12px;color:var(--muted)}
-.ornament{margin:18px 0;color:var(--gold);letter-spacing:7px}
-.divider{
-  height:1px;margin:24px 0;
-  background:linear-gradient(90deg,transparent,#d9ad7c66,transparent);
+
+.heart-icon {
+  font-size: 24px;
+  color: var(--pink);
+  text-shadow: 0 0 18px rgba(255,140,178,.6);
+  margin-bottom: 12px;
 }
-button{
-  display:block;width:100%;min-height:49px;margin-top:13px;
-  padding:14px 16px;border-radius:4px;
-  font-size:12px;font-weight:700;letter-spacing:1px;
-  cursor:pointer;transition:transform .2s,filter .2s,background .2s;
-  -webkit-tap-highlight-color:transparent;
+
+h1 {
+  font-size: clamp(34px, 9vw, 47px);
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 18px;
 }
-button:active{transform:scale(.98)}
-button:hover{filter:brightness(1.1)}
-.primary{
-  border:1px solid var(--gold);
-  color:#1b1113;
-  background:linear-gradient(110deg,#c99b75,#f0d2b4);
+
+h2 {
+  font-size: clamp(24px, 6vw, 31px);
+  font-weight: normal;
+  line-height: 1.4;
+  margin-bottom: 24px;
 }
-.secondary{
-  border:1px solid #d9ad7c66;
-  color:var(--rose);background:transparent;
+
+p {
+  color: var(--muted);
+  font: 13px/1.9 Arial, sans-serif;
 }
-.secondary:hover{background:#d9ad7c12}
-.note{
-  margin-top:24px;color:#b7a0a8;
-  font-size:9px;letter-spacing:2px;line-height:1.8;
+
+.divider {
+  height: 1px;
+  width: 105px;
+  margin: 23px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--pink), transparent);
+  position: relative;
 }
-.footer{
-  margin-top:20px;color:#947d85;
-  font-size:9px;letter-spacing:3px;
+
+.divider::after {
+  content: "♥";
+  color: var(--pink);
+  background: #21131b;
+  font-size: 11px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 8px;
 }
-.final-love{
-  margin:30px 0 12px;padding-top:25px;
-  border-top:1px solid #d9ad7c55;
-  color:var(--rose);font-family:Georgia,serif;
-  font-size:clamp(30px,8vw,40px);
-  letter-spacing:3px;text-shadow:0 0 25px #e9a8c755;
-  animation:loveGlow 2.5s ease-in-out infinite;
+
+.question-number {
+  color: var(--gold);
+  font: 9px Arial, sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
 }
-@keyframes loveGlow{
-  50%{text-shadow:0 0 35px #e9a8c799}
+
+.question-title {
+  font-size: clamp(23px, 5.8vw, 29px);
+  margin-bottom: 25px;
 }
-.final-small{font-size:10px;letter-spacing:3px;color:var(--gold)}
-@media(max-width:360px){
-  .card{padding:25px 17px}
-  p{font-size:14px}
-  .emblem{width:82px;height:82px}
+
+.options {
+  display: grid;
+  gap: 10px;
 }
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation:none!important;transition:none!important}
+
+.option {
+  width: 100%;
+  padding: 13px 15px;
+  min-height: 46px;
+  border-radius: 15px;
+  border: 1px solid rgba(243,191,210,.43);
+  color: var(--baby);
+  background: rgba(255,255,255,.035);
+  text-align: left;
+  font: 12px/1.6 Arial, sans-serif;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.option:hover,
+.option:focus-visible {
+  border-color: var(--pink);
+  background: rgba(183,110,121,.23);
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(243,191,210,.1);
+}
+
+.primary,
+.secondary {
+  width: 100%;
+  min-height: 46px;
+  border-radius: 30px;
+  padding: 13px 16px;
+  cursor: pointer;
+  font: 10px Arial, sans-serif;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  transition: .2s ease;
+}
+
+.primary {
+  color: #2a111a;
+  font-weight: bold;
+  border: 1px solid rgba(255,235,241,.8);
+  background: linear-gradient(110deg, #d77f96, #ffe0e9, #c7788e);
+  box-shadow: 0 5px 23px rgba(219,109,143,.3);
+}
+
+.secondary {
+  color: var(--baby);
+  background: transparent;
+  border: 1px solid rgba(243,191,210,.55);
+  margin-top: 10px;
+}
+
+.primary:hover,
+.secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(219,109,143,.28);
+}
+
+.footer-note {
+  margin-top: 24px;
+  color: #ad94a0;
+  font: 8px Arial, sans-serif;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.confession {
+  color: var(--muted);
+  text-align: left;
+  font: 13px/1.9 Arial, sans-serif;
+  margin-bottom: 23px;
+}
+
+.confession strong {
+  color: var(--pink);
+  font-weight: normal;
+}
+
+.final-heart {
+  font-size: 44px;
+  color: #ffb2c8;
+  filter: drop-shadow(0 0 12px #ed779c);
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.13); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+/* Romantic couple illustration */
+.couple-art {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+@media (max-width: 380px) {
+  main { width: calc(100% - 18px); padding-top: 14px; }
+  .page { padding: 28px 17px; min-height: 460px; }
+  .option { font-size: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 </style>
 </head>
 
 <body>
-<div id="particles" aria-hidden="true"></div>
+<div id="floating-hearts" aria-hidden="true"></div>
+<div id="sparkles" aria-hidden="true"></div>
 
-<main class="shell">
-  <div class="brand">♡ A little something for you ♡</div>
+<main>
+  <div class="brand">A little secret · Just for you ♡</div>
 
-  <section class="card">
-
-    <div class="page active" id="p1">
-      <div class="emblem">♡</div>
-      <div class="eyebrow">A private little surprise</div>
-      <h1>For Someone<br>Special</h1>
-      <div class="ornament">— ✦ —</div>
-      <p>There is something I've been wanting to tell you.</p>
-      <p class="sub">A little courage. A sincere heart. A message just for you.</p>
-      <button class="primary" onclick="go(2)">OPEN YOUR LETTER ♡</button>
-      <div class="note">MADE WITH SINCERITY</div>
-    </div>
-
-    <div class="page" id="p2">
-      <div class="eyebrow">A little question · 01</div>
-      <div class="emblem">✉</div>
-      <h2>Can I tell you something from my heart?</h2>
-      <p>I have kept these words to myself for a while.</p>
-      <button class="primary" onclick="go(3)">YES, I'M LISTENING</button>
-      <button class="secondary" onclick="go(1)">GO BACK</button>
-    </div>
-
-    <div class="page" id="p3">
-      <div class="eyebrow">A little question · 02</div>
-      <div class="emblem">♡</div>
-      <h2>You have become someone special to me.</h2>
-      <p>Would you like to hear what I have been wanting to say?</p>
-      <button class="primary" onclick="go(4)">TELL ME YOUR HEART ♡</button>
-      <button class="secondary" onclick="go(5)">I NEED SOME TIME 🌷</button>
-      <div class="note">YOUR COMFORT ALWAYS MATTERS</div>
-    </div>
-
-    <div class="page" id="p4">
-      <div class="emblem">💌</div>
-      <div class="eyebrow">A message from my heart</div>
-      <h2>Before you read...</h2>
-      <p>This is honest, and I mean every word. You are free to feel whatever you feel.</p>
-      <div class="divider"></div>
-      <p class="sub">Ready for my little confession?</p>
-      <button class="primary" onclick="go(6)">READ MY CONFESSION ♥</button>
-      <button class="secondary" onclick="go(1)">START AGAIN</button>
-    </div>
-
-    <div class="page" id="p5">
-      <div class="emblem">🌷</div>
-      <div class="eyebrow">Take your time</div>
-      <h2>That's completely okay.</h2>
-      <p>You don't have to rush your answer. Your feelings matter, and I will respect your choice.</p>
-      <button class="primary" onclick="go(6)">READ MY MESSAGE 💌</button>
-      <button class="secondary" onclick="go(1)">START AGAIN</button>
-    </div>
-
-    <div class="page" id="p6">
-      <div class="emblem">♥</div>
-      <div class="eyebrow">My honest confession</div>
-      <h1>I Love You ❤️</h1>
-      <div class="ornament">— ♡ —</div>
-
-      <p>Sach kahun toh, <strong>main tumhare peeche pagal sa hoon.</strong> 🥹❤️</p>
-
-      <p><strong>Tum meri crush ho,</strong> aur main tumse bahut pyaar karta hoon. 💗</p>
-
-      <p>Tumhe shayad andaaza bhi nahi ki tum mere liye kitni special ho.</p>
-
-      <div class="divider"></div>
-
-      <p>Agar tumhari feelings mere jaisi nahi hain, toh koi baat nahi. 🫶</p>
-
-      <p>Agar tum mujhe us nazar se nahi dekhti, toh <strong>kya hum friends ban sakte hain?</strong> 🌷</p>
-
-      <p>Main tumhare decision ki respect karunga. Tumhari friendship bhi mere liye important hogi.</p>
-
-      <div class="divider"></div>
-
-      <p>Bas dil ki baat tum tak pahunchani thi. 💌</p>
-
-      <button class="primary" onclick="go(1)">READ AGAIN ♡</button>
-
-      <div class="final-love">I LOVE YOU ❤️</div>
-      <div class="final-small">FOREVER FROM MY HEART ♡</div>
-      <div class="note">NO PRESSURE · JUST HONEST FEELINGS</div>
-    </div>
-
+  <!-- WELCOME -->
+  <section class="page active" id="welcome">
+    <div class="eyebrow">A little secret · Just for you</div>
+    <div class="heart-icon">♡</div>
+    <div class="divider"></div>
+    <h1>Hey, You! ♡</h1>
+    <p>Someone has something special<br>to tell you.</p>
+    <p style="margin-top:18px">But first, a few little questions...</p>
+    <div class="divider"></div>
+    <p style="color:var(--pink)">Ready for a tiny journey? 🌸</p>
+    <button class="primary" style="margin-top:28px" onclick="startQuestions()">Let's Begin ♡</button>
+    <div class="footer-note">Made with a little courage ♡</div>
   </section>
 
-  <div class="footer">A SMALL MESSAGE · A SINCERE HEART</div>
+  <!-- QUESTION 1 -->
+  <section class="page" id="q1">
+    <div class="question-number">QUESTION 01 / 08</div>
+    <div class="heart-icon">♥</div>
+    <h2 class="question-title">Do you know someone has a little secret for you? 👀</h2>
+    <div class="options">
+      <button class="option" onclick="answer(1)">Yes, I have a guess 💗</button>
+      <button class="option" onclick="answer(1)">No, tell me! 🤭</button>
+      <button class="option" onclick="answer(1)">Maybe I know who it is ✨</button>
+      <button class="option" onclick="answer(1)">I'm curious now 💌</button>
+    </div>
+    <div class="footer-note">One little question at a time ♡</div>
+  </section>
+
+  <!-- QUESTION 2 -->
+  <section class="page" id="q2">
+    <div class="question-number">QUESTION 02 / 08</div>
+    <div class="heart-icon">♥</div>
+    <h2 class="question-title">Do you like talking to me? 🌸</h2>
+    <div class="options">
+      <button class="option" onclick="answer(2)">Yess, of course ❤️</button>
+      <button class="option" onclick="answer(2)">Sometimes 🤭</button>
+      <button class="option" onclick="answer(2)">You're fun to talk to 😊</button>
+      <button class="option" onclick="answer(2)">Maybe a little 🙈</button>
+    </div>
+    <div class="footer-note">Your answer is yours ♡</div>
+  </section>
+
+  <!-- QUESTION 3 -->
+  <section class="page" id="q3">
+    <div class="question-number">QUESTION 03 / 08</div>
+    <div class="heart-icon">♥</div>
+    <h2 class="question-title">Can I tell you something from my heart? 💌</h2>
+    <div class="options">
+      <button class="option" onclick="answer(3)">Yes, tell me ❤️</button>
+      <button class="option" onclick="answer(3)">I'm listening 🥹</button>
+      <button class="option" onclick="answer(3)">Now I'm curious 👀</button>
+      <button class="option" onclick="answer(3)">Okay, go ahead 🌷</button>
+    </div>
+    <div class="footer-note">A little more courage ♡</div>
+  </section>
+
+  <!-- QUESTION 4 -->
+  <section class="page" id="q4">
+    <div class="question-number">QUESTION 04 / 08</div>
+    <div class="heart-icon">♥</div>
+    <h2 class="question-title">Have you ever had a crush on someone? 💕</h2>
+    <div class="options">
+      <button class="option" onclick="answer(4)">Yes 🙈</button>
+      <button class="option" onclick="answer(4)">Maybe 🤭</button>
+      <button class="option" onclick="answer(4)">Not yet 🌸</button>
+      <button class="option" onclick="answer(4)">That's a secret 🤫</button>
+    </div>
+    <div class="footer-note">Secrets are safe here ♡</div>
+  </section>
+
+  <!-- QUESTION 5 -->
+  <section class="page" id="q5">
+    <div class="question-number">QUESTION 05 / 08</div>
+    <div class="heart-icon">♥</div>
+    <h2 class="question-title">What would you do if someone secretly liked you? 👀</h2>
+    <div class="options">
+      <button class="option" onclick="answer(5)">I'd be happy 💗</button>
+      <button class="option" onclick="answer(5)">I'd ask who it is 🤭</button>
+      <button class="option" onclick="answer(5)">I'd feel shy 🙈</button>
+      <button class="option" onclick="answer(5)">It depends on who it is ❤️</button>
+    </div>
+    <div class="footer-note">No wrong answers ♡</div>
+  </section>
+
+  <!-- QUESTION 6 -->
+  <section class="page" id="q6">
+    <div class="question-number">QUESTION 06 / 08</div>
+    <div class="heart-icon">♥</div>
+    <h2 class="question-title">Would you give someone a chance to express their feelings? 💌</h2>
+    <div class="options">
+      <button class="option" onclick="answer(6)">Of course ❤️</button>
+      <button class="option" onclick="answer(6)">Maybe, let's see 🌷</button>
+      <button class="option" onclick="answer(6)">I'd need some time 🥹</button>
+      <button class="option" onclick="answer(6)">I prefer friendship 🫶</button>
+    </div>
+    <div class="footer-note">Every feeling deserves respect ♡</div>
+  </section>
+
+  <!-- QUESTION 7 -->
+  <section class="page" id="q7">
+    <div class="question-number">QUESTION 07 / 08</div>
+    <div class="heart-icon">♥</div>
+    <h2 class="question-title">Are you ready for one little surprise? 🎁</h2>
+    <div class="options">
+      <button class="option" onclick="answer(7)">YESSS! 💗</button>
+      <button class="option" onclick="answer(7)">Show me already 🤭</button>
+      <button class="option" onclick="answer(7)">I'm ready ✨</button>
+      <button class="option" onclick="answer(7)">Okay, surprise me! ❤️</button>
+    </div>
+    <div class="footer-note">Almost there ♡</div>
+  </section>
+
+  <!-- QUESTION 8 -->
+  <section class="page" id="q8">
+    <div class="question-number">QUESTION 08 / 08</div>
+    <div class="heart-icon">♥</div>
+    <h2 class="question-title">Will you accept my proposal? 🥹❤️</h2>
+    <p style="margin:-10px 0 22px">Whatever your answer, please be honest. 💗</p>
+    <div class="options">
+      <button class="option" onclick="showPage('confession')">YES! ❤️😍</button>
+      <button class="option" onclick="showPage('confession')">I need some time 🌷</button>
+      <button class="option" onclick="showPage('friendship')">Can we be friends? 🫶</button>
+      <button class="option" onclick="showPage('confession')">I'm surprised! 🙈</button>
+    </div>
+    <div class="footer-note">Your choice will be respected ♡</div>
+  </section>
+
+  <!-- CONFESSION -->
+  <section class="page" id="confession">
+    <div class="eyebrow">Something from my heart</div>
+    <div class="heart-icon">♡</div>
+    <h2>My Confession 💌</h2>
+    <div class="divider"></div>
+    <div class="confession">
+      Pata nahi kaise kahun, but tum mere liye special ho. <strong>❤️</strong><br>
+      Tumse baat karna, tumhari smile aur tumhari presence mere din ko thoda aur achha bana deti hai.<br><br>
+      Shayad ye feelings friendship se thodi zyada hain. Main bas honestly tumhe batana chahta tha. <strong>💗</strong><br><br>
+      Tumhara answer jo bhi ho, main uski respect karunga. No pressure, no expectations. 🌷
+    </div>
+    <button class="primary" onclick="showPage('final')">One Last Thing ♡</button>
+    <button class="secondary" onclick="showPage('friendship')">Let's Be Friends 🫶</button>
+    <div class="footer-note">From the heart, with courage ♡</div>
+  </section>
+
+  <!-- FRIENDSHIP -->
+  <section class="page" id="friendship">
+    <div class="eyebrow">A beautiful beginning</div>
+    <div class="heart-icon">♡</div>
+    <h2>Friendship? 💗</h2>
+    <div class="divider"></div>
+    <p>Of course! ❤️</p>
+    <p style="margin-top:15px">
+      Tumhari friendship bhi mere liye special hogi.
+      Har beautiful story ko love story banna zaroori nahi.
+    </p>
+    <p style="margin-top:20px">
+      Thank you for being honest.<br>
+      Let's keep it simple, happy and respectful. 🌸
+    </p>
+    <button class="primary" style="margin-top:28px" onclick="showPage('final')">One Last Thing ♡</button>
+    <div class="footer-note">A little kindness means a lot ♡</div>
+  </section>
+
+  <!-- FINAL PAGE -->
+  <section class="page" id="final">
+    <div class="eyebrow">A little message · Just for you</div>
+
+    <!-- Boy and girl touching foreheads, glowing heart between them -->
+    <svg class="couple-art" viewBox="0 0 360 285" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A romantic illustration of a boy and girl touching foreheads with a glowing heart between them">
+      <defs>
+        <radialGradient id="sceneGlow">
+          <stop offset="0%" stop-color="#ffb2ca" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#ffb2ca" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="hairBoy" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#4a303e"/>
+          <stop offset="100%" stop-color="#100b11"/>
+        </linearGradient>
+        <linearGradient id="hairGirl" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#754052"/>
+          <stop offset="100%" stop-color="#170c14"/>
+        </linearGradient>
+        <linearGradient id="coatBoy" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#372530"/>
+          <stop offset="100%" stop-color="#09090c"/>
+        </linearGradient>
+        <linearGradient id="dressGirl" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#b9758d"/>
+          <stop offset="100%" stop-color="#482233"/>
+        </linearGradient>
+        <filter id="heartGlow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="5" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <ellipse cx="180" cy="140" rx="150" ry="130" fill="url(#sceneGlow)"/>
+
+      <!-- Stars -->
+      <g fill="#ffe0ea">
+        <path d="M46 65 L50 74 L59 78 L50 82 L46 91 L42 82 L33 78 L42 74Z"/>
+        <path d="M310 56 L313 63 L320 66 L313 69 L310 76 L307 69 L300 66 L307 63Z"/>
+        <path d="M180 23 L182 28 L187 30 L182 32 L180 37 L178 32 L173 30 L178 28Z"/>
+        <circle cx="79" cy="111" r="2"/>
+        <circle cx="286" cy="110" r="2"/>
+      </g>
+
+      <!-- Boy's shoulder and clothing -->
+      <path d="M18 275 Q21 222 61 201 Q84 186 115 194
+               L151 218 L162 275Z"
+            fill="url(#coatBoy)" stroke="#654252" stroke-width="1.4"/>
+      <path d="M78 201 L105 224 L127 275 L151 275
+               L118 195Z" fill="#20151e"/>
+
+      <!-- Boy's neck -->
+      <path d="M96 159 L99 195 Q113 208 130 193 L128 158Z"
+            fill="#c58c88"/>
+
+      <!-- Boy's face -->
+      <path d="M69 95
+               Q74 67 101 62
+               Q128 62 140 87
+               L142 108
+               L132 117
+               Q128 145 111 160
+               Q100 165 88 150
+               Q75 134 72 117
+               L64 111Z"
+            fill="#ce9991"/>
+
+      <!-- Boy's hair -->
+      <path d="M64 113
+               Q53 93 63 72
+               Q75 45 103 45
+               Q131 44 145 67
+               Q154 83 143 105
+               L134 113
+               Q132 91 118 81
+               Q100 94 81 88
+               Q78 104 69 119Z"
+            fill="url(#hairBoy)" stroke="#684557" stroke-width="1.4"/>
+      <path d="M65 82 Q80 47 108 54 Q91 63 89 77 Q77 70 65 82Z"
+            fill="#593848"/>
+
+      <!-- Boy's closed eye and profile -->
+      <path d="M116 115 Q122 119 127 114"
+            fill="none" stroke="#78454b" stroke-width="2.1" stroke-linecap="round"/>
+      <path d="M136 109 Q144 112 136 119"
+            fill="none" stroke="#bd817d" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Girl's body -->
+      <path d="M198 275 Q205 222 239 201
+               Q263 185 289 200
+               Q328 220 340 275Z"
+            fill="url(#dressGirl)" stroke="#a96b83" stroke-width="1.4"/>
+
+      <!-- Girl's neck -->
+      <path d="M231 159 L231 193 Q246 207 263 192 L260 157Z"
+            fill="#dba39a"/>
+
+      <!-- Girl's face -->
+      <path d="M288 95
+               Q281 67 254 62
+               Q228 63 218 88
+               L217 108
+               L227 117
+               Q231 144 247 160
+               Q258 165 270 150
+               Q283 134 286 117
+               L295 111Z"
+            fill="#dfa59b"/>
+
+      <!-- Girl's hair -->
+      <path d="M295 113
+               Q307 94 298 70
+               Q287 44 257 44
+               Q229 44 215 67
+               Q206 84 216 104
+               L225 115
+               Q229 91 242 81
+               Q260 93 279 88
+               Q282 105 290 119Z"
+            fill="url(#hairGirl)" stroke="#8a5065" stroke-width="1.4"/>
+      <path d="M295 81 Q282 48 254 53 Q272 61 275 78 Q286 70 295 81Z"
+            fill="#82455b"/>
+
+      <!-- Girl's closed eye and profile -->
+      <path d="M243 114 Q249 119 254 114"
+            fill="none" stroke="#96545d" stroke-width="2.1" stroke-linecap="round"/>
+      <path d="M223 109 Q215 113 223 119"
+            fill="none" stroke="#d49a93" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Forehead contact highlight -->
+      <path d="M141 101 Q151 106 158 107"
+            fill="none" stroke="#ffe0e8" stroke-width="1.6" opacity=".9"/>
+      <path d="M219 101 Q209 106 202 107"
+            fill="none" stroke="#ffe0e8" stroke-width="1.6" opacity=".9"/>
+
+      <!-- Glowing heart in the middle -->
+      <g filter="url(#heartGlow)">
+        <path d="M180 106
+                 C169 90 150 98 157 114
+                 C162 125 174 133 180 139
+                 C187 132 199 124 203 114
+                 C210 98 191 90 180 106Z"
+              fill="#ff8fb5" stroke="#fff0f5" stroke-width="2.3"/>
+        <path d="M180 110
+                 C173 101 162 105 166 114
+                 C169 121 176 126 180 129
+                 C185 125 192 119 195 114
+                 C198 105 187 101 180 110Z"
+              fill="#ffcadb"/>
+      </g>
+
+      <!-- Small floating hearts -->
+      <path d="M43 151 C37 143 26 149 31 157 L43 166 L55 157 C60 149 49 143 43 151Z"
+            fill="#f4a5bd"/>
+      <path d="M316 145 C311 138 301 143 305 151 L316 160 L327 151 C332 143 321 138 316 145Z"
+            fill="#f4a5bd"/>
+      <ellipse cx="180" cy="276" rx="125" ry="5" fill="#df809e" opacity=".2"/>
+    </svg>
+
+    <p style="font-size:9px;letter-spacing:1.7px;color:var(--gold);text-transform:uppercase;margin:5px 0 16px">
+      No pressure · Just honest feelings
+    </p>
+
+    <div class="final-heart">♡</div>
+    <h1 style="font-size:clamp(30px,8vw,42px);margin:12px 0">I LOVE YOU ❤️</h1>
+    <p>Whatever your answer, thank you for reading this little message.</p>
+    <p style="margin-top:8px">You deserve happiness. 💗</p>
+    <div class="divider"></div>
+    <button class="primary" onclick="restart()">Read Again ♡</button>
+    <div class="footer-note">A little courage, from the heart ♡</div>
+  </section>
 </main>
 
 <script>
-function go(n){
-  document.querySelectorAll('.page').forEach(function(page){
-    page.classList.remove('active');
+const questionPages = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"];
+let currentQuestion = 0;
+
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
   });
-  const target=document.getElementById('p'+n);
-  if(target) target.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+
+  const page = document.getElementById(id);
+  if (page) {
+    page.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 }
 
-const holder=document.getElementById('particles');
-const symbols=['♡','✦','♥','✧'];
-
-function addParticle(){
-  if(holder.childElementCount>18)return;
-  const el=document.createElement('span');
-  el.className='particle';
-  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-  el.style.left=Math.random()*100+'%';
-  el.style.fontSize=(11+Math.random()*15)+'px';
-  el.style.animationDuration=(7+Math.random()*7)+'s';
-  holder.appendChild(el);
-  el.addEventListener('animationend',function(){el.remove();},{once:true});
+function startQuestions() {
+  currentQuestion = 0;
+  showPage(questionPages[currentQuestion]);
 }
-for(let i=0;i<7;i++)setTimeout(addParticle,i*450);
-setInterval(addParticle,1000);
+
+function answer(questionNumber) {
+  if (questionNumber < 8) {
+    currentQuestion = questionNumber;
+    showPage(questionPages[currentQuestion]);
+  } else {
+    showPage("confession");
+  }
+}
+
+function restart() {
+  currentQuestion = 0;
+  showPage("welcome");
+}
+
+/* Floating hearts */
+const heartContainer = document.getElementById("floating-hearts");
+const heartSymbols = ["♡", "♥", "💕", "💗"];
+
+function createFloatingHeart() {
+  const heart = document.createElement("span");
+  heart.className = "float-heart";
+  heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (12 + Math.random() * 15) + "px";
+  heart.style.animationDuration = (7 + Math.random() * 7) + "s";
+  heartContainer.appendChild(heart);
+  setTimeout(() => heart.remove(), 15000);
+}
+
+setInterval(createFloatingHeart, 850);
+
+/* Background sparkles */
+const sparkleContainer = document.getElementById("sparkles");
+
+for (let i = 0; i < 25; i++) {
+  const sparkle = document.createElement("span");
+  sparkle.className = "sparkle";
+  sparkle.style.left = Math.random() * 100 + "vw";
+  sparkle.style.top = Math.random() * 100 + "vh";
+  sparkle.style.animationDelay = Math.random() * 3 + "s";
+  sparkleContainer.appendChild(sparkle);
+}
 </script>
 </body>
 </html>
